@@ -1,27 +1,8 @@
 <script lang="ts">
-    //only bc rollup screw me up
-    interface ModelStore {
-        getStateProp(propName: string): any;
-        updateStateProp(propName: string, newValue: any): void;
-    }
-
 	import PokemonListViewModel from "pokedex-mvvm-base/dist/Presentation/PokemonList/PokemonListViewModel";
 	import PokemonListModel from "pokedex-mvvm-base/dist/Presentation/PokemonList/PokemonListModel";
     import { onMount } from "svelte";
-
-    class ObjectStore implements ModelStore {
-        state:any = {
-            pokemonList:[]
-        }
-
-        getStateProp(propName: string) {
-            return this.state[`${propName}`]
-        }
-
-        updateStateProp(propName: string, newValue: any): void {
-            this.state[`${propName}`] = newValue
-        }
-    }   
+    import ObjectStore from "../../store/ObjectStore";
 
     const store = new ObjectStore()
     const model = new PokemonListModel(store)
@@ -35,6 +16,7 @@
         loading = false
 	});
 
+    // Controller Method Example
     async function onClickNextPage(){
         loading = true
         await viewModel.nextPage()
@@ -56,7 +38,7 @@
         </ul>
     {/if}
 
-    <button on:click={onClickNextPage}> PROXIMO </button>
+    <button on:click={onClickNextPage}>PROXIMO</button>
 </main>
 
 <style>
