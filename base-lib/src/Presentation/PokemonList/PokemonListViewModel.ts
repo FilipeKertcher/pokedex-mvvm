@@ -1,5 +1,4 @@
 import RemoteListPokemons from "../../Data/Usecases/ListPokemons"
-import { PokemonListItem } from "../../Domain/Models/PokemonList"
 import HttpAxiosAdapter from "../../Infra/Http/AxiosAdapter"
 import PokemonListModel from "./PokemonListModel"
 
